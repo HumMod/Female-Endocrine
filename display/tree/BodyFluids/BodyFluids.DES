@@ -1,0 +1,12 @@
+<branch>
+  <name> BODYFLUIDS </name>
+  <label> BodyFluids </label>
+  <parent> MAINMENU </parent>
+</branch>
+
+<?path Display\Tree\BodyFluids\ ?>
+
+<?include Blood.DES ?>
+
+End
+

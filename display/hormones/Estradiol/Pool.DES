@@ -1,0 +1,339 @@
+HumMod / Pool
+
+Created : 03-Oct-08
+Last Modified : 26-Jan-10
+Author : Tom Coleman
+Copyright : 2008-2010
+By : University of Mississippi Medical Center
+Schema : DES V1.0
+
+<groupbox>
+   <row> 2.0 </row>
+   <col> 1.0 </col>
+   <high> 14.2 </high>
+   <wide> 30.0 </wide>
+   <title> Pool </title>
+
+<structurename> Estradiol </structurename>
+
+<showvalue>
+   <row> 1.4 </row><col> 1.0 </col>
+   <name> [Conc(pg/mL)] </name>
+   <format><decimal> 2 </decimal></format>
+   <label> [Estradiol (pg/mL)] </label>
+</showvalue>
+
+<showgraph>
+  <row> 2.4 </row><col> 1.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 6 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> [Conc(pg/mL)] </name>
+      <nolabel/>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <scale>
+      <min> 0 </min><max> 1 </max><inc> 1 </inc>
+    </scale>
+  </yaxis>
+</showgraph>
+
+<showvalue>
+   <row> 9.8 </row><col> 1.0 </col>
+   <name> [Conc(nG/mL)] </name>
+   <format><decimal> 3 </decimal></format>
+   <label> [Estradiol (nG/mL)] </label>
+</showvalue>
+
+<showvalue>
+   <row> 11.2 </row><col> 1.0 </col>
+   <name> Mass </name>
+   <format><decimal> 2 </decimal></format>
+   <label> Mass </label>
+</showvalue>
+
+<showvalue>
+   <row> 12.2 </row><col> 3 </col>
+   <name> [Conc(nMol/L)] </name>
+   <format><decimal> 3 </decimal></format>
+   <label> [Estradiol (nMol/L] </label>
+</showvalue>
+
+<!--<showvalue>
+   <row> 13.6 </row><col> 1.0 </col>
+   <name> Gain </name>
+   <format><decimal> 3 </decimal></format>
+   <label> Gain </label>
+</showvalue>
+
+<showvalue>
+   <row> 14.6 </row><col> 1.0 </col>
+   <name> Loss </name>
+   <format><decimal> 3 </decimal></format>
+   <label> Loss </label>
+</showvalue>
+
+<showgraph>
+  <row> 20.4 </row><col> 1.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 6 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> Secretion(mg/24hr) </name>
+      <label> mg/24hr </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <scale>
+      <min> 0 </min><max> 1 </max><inc> 1 </inc>
+    </scale>
+  </yaxis>
+</showgraph>
+
+
+<showgraph>
+  <row> 20.4 </row><col> 1.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 6 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> Ovaries-New.[AF2] </name>
+      <label> [AF2] </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <scale>
+      <min> 0 </min><max> 1 </max><inc> 1 </inc>
+    </scale>
+  </yaxis>
+</showgraph>
+
+<showgraph>
+  <row> 20.4 </row><col> 35.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 6 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> Ovaries-New.[AF1] </name>
+      <label> [AF1] </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <yvar>
+      <name> Ovaries-New.[AF3] </name>
+      <label> [AF3] </label>
+      <linecolor> GREEN </linecolor>
+    </yvar>
+    <yvar>
+      <name> Ovaries-New.[PrF] </name>
+      <label> [PRF] </label>
+      <linecolor> RED </linecolor>
+    </yvar>
+    <scale>
+      <min> 0 </min><max> 1 </max><inc> 1 </inc>
+    </scale>
+  </yaxis>
+</showgraph>
+
+<showgraph>
+  <row> 20.4 </row><col> 65.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 6 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> Ovaries-New.[AF4] </name>
+      <label> [AF4] </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <yvar>
+      <name> Ovaries-New.[OvF] </name>
+      <label> [OvF] </label>
+      <linecolor> GREEN </linecolor>
+    </yvar>
+    <yvar>
+      <name> Ovaries-New.[Sc1] </name>
+      <label> [Sc1] </label>
+      <linecolor> RED </linecolor>
+    </yvar>
+    <yvar>
+      <name> Ovaries-New.[Sc2] </name>
+      <label> [Sc2] </label>
+      <linecolor> BLACK </linecolor>
+    </yvar>
+    <scale>
+      <min> 0 </min><max> 0.4 </max><inc> 1 </inc>
+    </scale>
+  </yaxis>
+</showgraph>
+
+<showgraph>
+  <row> 30.4 </row><col> 1.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 6 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> Ovaries-New.[Lut1] </name>
+      <label> [Lut1] </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <yvar>
+      <name> Ovaries-New.[Lut2] </name>
+      <label> [Lut2] </label>
+      <linecolor> GREEN </linecolor>
+    </yvar>
+    <yvar>
+      <name> Ovaries-New.[Lut3] </name>
+      <label> [Lut3] </label>
+      <linecolor> RED </linecolor>
+    </yvar>
+    <yvar>
+      <name> Ovaries-New.[Lut4] </name>
+      <label> [Lut4] </label>
+      <linecolor> BLACK </linecolor>
+    </yvar>
+    <scale>
+      <min> 0 </min><max> 0.15 </max><inc> 1 </inc>
+    </scale>
+  </yaxis>
+</showgraph>
+
+<showgraph>
+  <row> 40.4 </row><col> 1.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 6 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> Ovaries-New.FlagAF2 </name>
+      <label> FlagAF2 </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <yvar>
+      <name> Ovaries-New.FlagAF3 </name>
+      <label> FlagAF3 </label>
+      <linecolor> RED </linecolor>
+    </yvar>
+    <scale>
+      <min> 0 </min><max> 1 </max><inc> 1 </inc>
+    </scale>
+  </yaxis>
+</showgraph>
+
+<showgraph>
+  <row> 30.4 </row><col> 35.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 6 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> Ovaries-New.[Sensitivity] </name>
+      <label> [Sensitivity] </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <scale>
+      <min> 0 </min><max> 1 </max><inc> 1 </inc>
+    </scale>
+  </yaxis>
+</showgraph>
+
+<showgraph>
+  <row> 30.4 </row><col> 65.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 6 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> Ovaries-New.Change </name>
+      <label> dSensitivity </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <scale>
+      <min> 0 </min><max> 1 </max><inc> 1 </inc>
+    </scale>
+  </yaxis>
+</showgraph>
+
+<showgraph>
+  <row> 40.4 </row><col> 65.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 6 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> Follicle-Estradiol.AF2Source </name>
+      <label> E2-AF2 </label>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <yvar>
+      <name> Follicle-Estradiol.AF3Source </name>
+      <label> E2-AF3 </label>
+      <linecolor> GREEN </linecolor>
+    </yvar>
+    <yvar>
+      <name> Follicle-Estradiol.AF4Source </name>
+      <label> E2-AF4 </label>
+      <linecolor> BLACK </linecolor>
+    </yvar>
+    <yvar>
+      <name> Follicle-Estradiol.PrFSource </name>
+      <label> E2-Prf </label>
+      <linecolor> RED </linecolor>
+    </yvar>
+    <scale>
+      <min> 0 </min><max> 0.001 </max><inc> 0.001 </inc>
+    </scale>
+  </yaxis>
+</showgraph>
+
+
+<infobutton>
+  <row> 1.2 </row>
+  <col> 26.0 </col>
+
+  <line> Typical estradiol concentration in the </line>
+  <line> female is 0.15 nMol/L or 0.05 nG/mL early </line>
+  <line> in the follicular phase and 1.0 or more </line>
+  <line> late in the follicular phase. Concentration </line>
+  <line> in the luteal phase is around 0.70. </line>
+  <line>  </line>
+  <line> Concentration in the male is close to </line>
+  <line> zero. </line>
+</infobutton>
+-->
+</groupbox>
+
+End

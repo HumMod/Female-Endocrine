@@ -1,0 +1,24 @@
+<panel><name> Uterus-Fetus </name>
+
+<label>
+  <row> 0.3 </row>
+  <col> 4.5 </col>
+  <text> Fetus </text>
+</label>
+
+<showclock>
+  <row> 0.3 </row><col> 32.0 </col>
+  <name> System.X </name>
+  <ampm/>
+  <secs/>
+  <days/>
+</showclock>
+
+<?path Display\Organs\Uterus\Fetus\ ?>
+
+<!--<?include Size.DES ?>
+<?include Metabolism.DES ?>
+<?include Fertilization.DES ?>
+<?include PregnancyTest.DES ?>-->
+
+</panel>

@@ -1,0 +1,11 @@
+<?path Display\Organs\Ovaries\ ?>
+
+<?include Follicle\Follicle.DES ?>
+<?include CorpusLuteum\CorpusLuteum.DES ?>
+
+<?include Estradiol\Estradiol.DES ?>
+<?include Progesterone\Progesterone.DES ?>
+<?include Testosterone\Testosterone.DES ?>
+<?include Inhibin\Inhibin.DES ?>
+
+End

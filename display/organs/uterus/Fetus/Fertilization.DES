@@ -1,0 +1,60 @@
+<groupbox>
+   <row> 16.0 </row>
+   <col> 1.0 </col>
+   <high> 10 </high>
+   <wide> 30.0 </wide>
+   <title> Fertilization </title>
+
+<structurename> Fetus </structurename>
+
+<actionbutton>
+   <row> 1.4 </row>
+   <col> 1.0 </col>
+   <blockname> Intercourse </blockname>
+   <label> Intercourse </label>
+</actionbutton>
+
+<showvalue>
+   <row> 3.0 </row><col> 1.0 </col>
+   <name> Timestamp </name>
+   <format>
+     <timestamp/>
+     <fieldwidth> 16 </fieldwidth>
+   </format>
+   <label> Timestamp </label>
+</showvalue>
+
+<showvalue>
+   <row> 4.0 </row><col> 1.0 </col>
+   <name> Fetus.FertilizationTime </name>
+   <format><timestamp/><fieldwidth> 20 </fieldwidth></format>
+   <label> Fertilization </label>
+</showvalue>
+
+<checkbox>
+   <row> 5.5 </row><col> 1.0 </col>
+   <name>  Fetus.AnnouncePregnancy </name>
+   <label> Announce Pregnancy </label>
+</checkbox>
+
+<showvalue>
+   <row> 6.7 </row><col> 1.0 </col>
+   <name> Fetus.EmbryonicAge </name>
+   <format><decimal> 2 </decimal></format>
+   <label> Embryonic Age </label>
+</showvalue>
+
+<showvalue>
+   <row> 7.7 </row><col> 1.0 </col>
+   <name> Fetus.GestationalAge </name>
+   <format><decimal> 2 </decimal></format>
+   <label> Gestational Age </label>
+</showvalue>
+
+<infobutton>
+  <row> 1.2 </row>
+  <col> 26.0 </col>
+  <line> Gestational age is determined by the date of last menstruation. </line>
+</infobutton>
+
+</groupbox>

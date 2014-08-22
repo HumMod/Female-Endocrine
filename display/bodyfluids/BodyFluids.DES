@@ -1,0 +1,6 @@
+<?path Display\BodyFluids\ ?>
+
+<?include Blood\Blood.DES ?>
+
+End
+

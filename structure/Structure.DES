@@ -1,0 +1,87 @@
+HumMod / Structure.DES
+
+Created : 21-Oct-04
+Revised : 2013-03-09
+Author : Tom Coleman
+Copyright : 2008-2013
+By : University of Mississippi Medical Center
+
+<?path Structure\ ?>
+
+<?include BloodVolume\BloodVol.DES ?>
+<?include Estradiol\Estradiol.DES ?>
+<?include FSH\FSH.DES ?>
+<?include Gender\Gender.DES ?>
+<?include GnRH\GnRH.DES ?>
+<?include hCG\hCG.DES ?>
+<?include Inhibin\Inhibin.DES ?>
+<?include LH\LH.DES ?>
+<?include Progesterone\Progesterone.DES ?>
+<?include Ovaries\Ovaries.DES ?>
+<?include Uterus\Uterus.DES ?>
+<?include Drugs\Drugs.DES ?>
+
+<structure><name> Structure </name>
+
+<definitions>
+
+<block><name> Context </name>
+
+  <call> Gender.Init </call>
+  <call> hCG.Init </call>
+  <call> Estradiol.Init </call>
+  <call> Progesterone.Init </call>
+
+</block>
+
+<block><name> Parms </name>
+
+  <call> GnRH.Parms </call>
+  <call> LH.Parms </call>
+  <call> FSH.Parms </call>
+  <call> Ovaries.Parms </call>
+  <call> BloodVol.CalcVol </call>
+  <call> Drugs.Parms </call>
+  <call> Drugs.CalcConc </call> 
+
+</block>
+
+<block><name> Dervs </name>
+
+  <call> Estradiol.Conc </call>
+  <call> FSH.Conc </call>
+  <call> hCG.Conc </call>
+  <call> Inhibin.Conc </call>
+  <call> LH.Conc </call>
+  <call> Progesterone.Conc </call>
+  <call> Ovaries.Dervs </call>
+  <call> Uterus.Dervs </call>
+  <call> Endometrium.Dervs </call>
+  <call> GnRH.Dervs </call>
+  <call> GnRH.Conc </call>
+  <call> hCG.Dervs </call>
+  <call> Estradiol.Dervs </call>
+  <call> FSH.Dervs </call>
+  <call> Inhibin.Dervs </call>
+  <call> LH.Dervs </call>
+  <call> Progesterone.Dervs </call>
+  <call> Drugs.Dervs </call>
+
+</block>
+
+<block><name> Wrapup </name>
+ 
+  <if>
+    <test> Gender.IsFemale </test>
+    <true><call> Ovaries.WrapUp </call></true>
+  </if>
+
+  <call> Endometrium.WrapUp </call>
+  <call> Drugs.Wrapup </call>
+
+</block>
+
+</definitions>
+</structure>
+
+End

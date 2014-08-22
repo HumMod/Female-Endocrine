@@ -1,0 +1,33 @@
+HumMod / Display
+
+Created : 05-Apr-05
+Revised : 2012-03-11
+Author : Tom Coleman
+Copyright : 2008-2012
+By : University of Mississippi Medical Center
+
+<?path Display\ ?>
+
+<display>
+
+<common>
+
+<addarrowsnewline/>
+
+<?include Tree\Tree.DES ?>
+<?include Common.DES ?>
+
+</common>
+
+<?include BodyFluids\BodyFluids.DES ?>
+<?include Hormones\Hormones.DES ?>
+<?include Organs\Organs.DES ?>
+<?include Intervention\Intervention.DES ?>
+
+<common>
+  <displayfirst> Estradiol </displayfirst>
+</common>
+
+</display>
+
+End

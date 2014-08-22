@@ -1,0 +1,7 @@
+<?path Display\Organs\Ovaries\CorpusLuteum\ ?>
+
+<?include Summary\Summary.DES ?>
+<!--<?include Growth\Growth.DES ?>
+<?include Involution\Involution.DES ?>-->
+
+End

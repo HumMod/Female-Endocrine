@@ -1,0 +1,19 @@
+<branch>
+  <name> DRUGS </name>
+  <label> Drugs </label>
+  <parent> INTERVENTION </parent>
+</branch>
+
+<branch>
+  <name> Drugs-Progestin </name>
+  <label> Progestin </label>
+  <parent> DRUGS  </parent>
+</branch>
+
+<leaf>
+  <name> Drugs-Progestin-Dosing </name>
+  <label> Dosing </label>
+  <parent> Drugs-Progestin </parent>
+</leaf>
+
+End

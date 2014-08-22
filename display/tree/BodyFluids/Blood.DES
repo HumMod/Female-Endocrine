@@ -1,0 +1,11 @@
+<branch>
+  <name> Blood </name>
+  <label> Blood </label>
+  <parent> BODYFLUIDS </parent>
+</branch>
+
+<leaf>
+  <name> Volume </name>
+  <label> Volume </label>
+  <parent> Blood </parent>
+</leaf>

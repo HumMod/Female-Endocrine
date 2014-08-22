@@ -1,0 +1,70 @@
+<groupbox>
+   <row> 2.0 </row>
+   <col> 32.0 </col>
+   <high> 20.0 </high>
+   <wide> 30.0 </wide>
+   <title> Metabolic Rate </title>
+
+<structurename> Placenta-Metabolism </structurename>
+<!--
+<showgraph>
+  <row> 2.4 </row><col> 1.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 4 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> Placenta-Metabolism.PlacentaCals </name>
+      <label> Placenta </label>
+      <linecolor> GREEN </linecolor>
+    </yvar>
+    <scale>
+      <min> 0 </min><max> 2 </max><inc> 1 </inc>
+    </scale>
+  </yaxis>
+</showgraph>
+
+<showbargraph>
+  <row> 9.8 </row><col> 1.0 </col><high> 4 </high><wide> 28 </wide>
+  <leftmargin> 11 </leftmargin>
+  <title> Effect </title>
+  <showinitialvalues/>
+  <bar>
+    <name> Thyroid.Effect </name>
+    <label> Thyroxine </label>
+    <color> BLUE </color>
+  </bar>
+  <bar>
+    <name> HeatMetabolism.Core </name>
+    <label> Temperature </label>
+    <color> BLUE </color>
+  </bar>
+  <scale>
+    <min> 0 </min><max> 2 </max><inc> 1 </inc>
+  </scale>
+</showbargraph>
+
+<showbargraph>
+  <row> 14.8 </row><col> 1.0 </col><high> 4 </high><wide> 28 </wide>
+  <leftmargin> 11 </leftmargin>
+  <title> Calories </title>
+  <showinitialvalues/>
+  <bar>
+    <name> Placenta-Metabolism.AerobicCals </name>
+    <label> Aerobic </label>
+    <color> BLUE </color>
+  </bar>
+  <bar>
+    <name> Placenta-Metabolism.AnaerobicCals </name>
+    <label> Anaerobic </label>
+    <color> BLUE </color>
+  </bar>
+  <scale>
+    <min> 0 </min><max> 5 </max><inc> 10 </inc>
+  </scale>
+</showbargraph>
+-->
+</groupbox>

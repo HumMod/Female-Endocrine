@@ -1,0 +1,31 @@
+HumMod / GENDER DES
+
+Created : 2011-07-26
+Revised : 2012-03-11
+Author : Tom Coleman
+Copyright : 2011-2012
+By : University of Mississippi Medical Center
+
+<branch>
+  <name> HORMONES </name>
+  <label> Hormones </label>
+  <parent> MAINMENU </parent>
+</branch>
+
+<branch>
+  <name> GENDER </name>
+  <label> Gender </label>
+  <parent> HORMONES </parent>
+</branch>
+
+<?path Display\Tree\Hormones\ ?>
+
+<?include Estradiol.DES ?>
+<?include FSH.DES ?>
+<?include GnRH.DES ?>
+<?include hCG.DES ?>
+<?include Inhibin.DES ?>
+<?include LH.DES ?>
+<?include Progesterone.DES ?>
+
+End

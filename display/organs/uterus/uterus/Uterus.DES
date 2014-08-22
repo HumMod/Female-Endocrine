@@ -1,0 +1,227 @@
+HumMod / Uterus
+
+Created : 05-Oct-08
+Last Modified : 26-Jan-10
+Author : Tom Coleman
+Copyright : 2008-2010
+By : University of Mississippi Medical Center
+Schema : DES V1.0
+
+<?path Display\Organs\Uterus\ ?>
+<?include CO2\CO2.DES ?>
+<?include AcidBase\AcidBase.DES ?>
+<?include Circulation\Circulation.DES ?>
+<?include Fuel\Fuel.DES ?>
+<?include Function\Function.DES ?>
+<?include Metabolism\Metabolism.DES ?>
+<?include Size\Size.DES ?>
+<?include Structure\Structure.DES ?>
+<?include Vasculature\Vasculature.DES ?>
+
+<!--
+<panel><name> Uterus </name>
+
+<showbitmap>
+  <row> 0.3 </row>
+  <col> 1.0 </col>
+  <name> Gender-Female </name>
+</showbitmap>
+
+<label>
+  <row> 0.3 </row>
+  <col> 4.5 </col>
+  <text> Uterus </text>
+</label>
+
+<showclock>
+  <row> 0.3 </row><col> 32.0 </col>
+  <name> System.X </name>
+  <ampm/>
+  <secs/>
+  <days/>
+</showclock>
+
+<?path Display\Organs\Uterus\ ?>
+
+<?include CO2\CO2.DES ?>
+<?include Gender.DES ?>
+
+<label>
+  <row> 5.4 </row>
+  <col> 1.0 </col>
+  <text> Nothing else yet. </text>
+</label>
+
+<showvalue>
+   <row> 6.4 </row><col> 1.0 </col>
+   <name> Uterus-Flow.BloodFlow </name>
+   <format><decimal> 1 </decimal></format>
+   <label> BloodFlow </label>
+</showvalue>
+
+<showvalue>
+   <row> 7.4 </row><col> 1.0 </col>
+   <name> Uterus-Pressure.PressureGradient </name>
+   <format><decimal> 1 </decimal></format>
+   <label> PressureGradient </label>
+</showvalue>
+
+<groupbox>
+   <row> 14.8 </row>
+   <col> 1.0 </col>
+   <high> 4.0 </high>
+   <wide> 30.0 </wide>
+   <title> Compartments </title>
+
+<structurename> Uterus-Size </structurename>
+
+<showvalue>
+   <row> 1.4 </row><col> 1.0 </col>
+   <name> IFV </name>
+   <format> <integer/> </format>
+   <label> IFV </label>
+</showvalue>
+
+<showvalue>
+   <row> 2.4 </row><col> 1.0 </col>
+   <name> CellH2O</name>
+   <format> <integer/> </format>
+   <label> Cell H2O </label>
+</showvalue>
+
+</groupbox>
+
+<groupbox>
+   <row> 14.8 </row>
+   <col> 32.0 </col>
+   <high> 6.4 </high>
+   <wide> 30.0 </wide>
+   <title> Density </title>
+
+<showvalue>
+   <row> 1.4 </row><col> 1.0 </col>
+   <name> Uterus-Size.Density </name>
+   <format><decimal> 3 </decimal></format>
+   <label> Organ </label>
+</showvalue>
+
+<showvalue>
+   <row> 2.8 </row><col> 3 </col>
+   <name> Uterus-Size.LiquidDensity </name>
+   <format><decimal> 3 </decimal></format>
+   <label> Liquids </label>
+</showvalue>
+
+<showvalue>
+   <row> 3.8 </row><col> 3 </col>
+   <name> Uterus-Size.SolidDensity</name>
+   <format><decimal> 3 </decimal></format>
+   <label> Solids </label>
+</showvalue>
+
+</groupbox>
+
+<groupbox>
+   <row> 2.0 </row>
+   <col> 32.0 </col>
+   <high> 12.4 </high>
+   <wide> 30.0 </wide>
+   <title> Mass </title>
+
+<showvalue>
+   <row> 1.4 </row><col> 1.0 </col>
+   <name> Uterus-Size.Mass </name>
+   <format> <integer/> </format>
+   <label> Mass </label>
+</showvalue>
+
+<showgraph>
+  <row> 2.4 </row><col> 1.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 6 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> Uterus-Size.Mass </name>
+      <nolabel/>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <scale>
+      <min> 40 </min><max> 60 </max><inc> 10 </inc>
+    </scale>
+  </yaxis>
+</showgraph>
+
+<showvalue>
+   <row> 9.8 </row><col> 1.0 </col>
+   <name> Uterus-Size.LiquidMass </name>
+   <format> <integer/> </format>
+   <label> Liquids </label>
+</showvalue>
+
+<showvalue>
+   <row> 10.8 </row><col> 1.0 </col>
+   <name> Uterus-Size.SolidMass</name>
+   <format> <integer/> </format>
+   <label> Solids </label>
+</showvalue>
+
+</groupbox>
+
+<groupbox>
+   <row> 20.0 </row>
+   <col> 1.0 </col>
+   <high> 12.4 </high>
+   <wide> 30.0 </wide>
+   <title> Volume </title>
+
+<showvalue>
+   <row> 1.4 </row><col> 1.0 </col>
+   <name> Uterus-Size.Vol </name>
+   <format> <integer/> </format>
+   <label> Volume </label>
+</showvalue>
+
+<showgraph>
+  <row> 2.4 </row><col> 1.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 6 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> Uterus-Size.Vol </name>
+      <nolabel/>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <scale>
+      <min> 30 </min><max> 60 </max>
+    </scale>
+  </yaxis>
+</showgraph>
+
+<showvalue>
+   <row> 9.8 </row><col> 1.0 </col>
+   <name> Uterus-Size.LiquidVol </name>
+   <format> <integer/> </format>
+   <label> Liquids </label>
+</showvalue>
+
+<showvalue>
+   <row> 10.8 </row><col> 1.0 </col>
+   <name> Uterus-Size.SolidVol</name>
+   <format> <integer/> </format>
+   <label> Solids </label>
+</showvalue>
+
+</groupbox>
+
+</panel>
+-->
+
+End

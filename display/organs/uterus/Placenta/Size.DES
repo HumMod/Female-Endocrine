@@ -1,0 +1,42 @@
+<groupbox>
+   <row> 2.0 </row>
+   <col> 1.0 </col>
+   <high> 14.8 </high>
+   <wide> 30.0 </wide>
+   <title> Mass </title>
+
+<showvalue>
+   <row> 1.4 </row><col> 1.0 </col>
+   <name> Placenta-Size.Mass </name>
+   <format> <integer/> </format>
+   <label> Mass </label>
+</showvalue>
+
+<showgraph>
+  <row> 2.4 </row><col> 1.0 </col><high> 7 </high><wide> 28 </wide>
+  <leftmargin> 6 </leftmargin>
+  <xaxis>
+    <name> System.X </name>
+    <label> Time </label>
+    <scale><min> 0 </min><max> 2 </max></scale>
+  </xaxis>
+  <yaxis>
+    <yvar>
+      <name> Placenta-Size.Mass </name>
+      <nolabel/>
+      <linecolor> BLUE </linecolor>
+    </yvar>
+    <scale>
+      <min> 0 </min><max> 60 </max>
+    </scale>
+  </yaxis>
+</showgraph>
+
+<showvalue>
+   <row> 10.8 </row><col> 1.0 </col>
+   <name> Placenta-Size.PlacentaTimer </name>
+   <format> <integer/> </format>
+   <label> Timer </label>
+</showvalue>
+
+</groupbox>
