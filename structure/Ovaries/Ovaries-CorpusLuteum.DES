@@ -61,17 +61,6 @@ Schema : DES V1.0
 
 <block><name> Wrapup </name>
 
-<if>
-<test>
-      ( Ovaries.Cycling? )
-  AND ( Ovaries.Phase EQ Ovaries.IS_LUTEAL )
-  AND ( Mass LT 100.0 )
-</test>
-<true>
-  <def><name> Ovaries.Phase </name><val> Ovaries.IS_IDLE </val></def>
-</true>
-</if>
-
 <def>
   <name> Radius(mM) </name>
   <val> ( 0.239 * Mass ) ^ 0.333 </val>

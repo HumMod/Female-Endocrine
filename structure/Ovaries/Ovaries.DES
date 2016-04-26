@@ -69,9 +69,7 @@ Schema : DES V1.0
 <block><name> WrapUp </name>
 
 <if>
-  <test>
- FALSE
-  </test>
+  <test> FALSE  </test>
   <true>
     <def><name> Cycling? </name><val> FALSE </val></def>
     <def><name> Phase </name><val> IS_IDLE </val></def>
@@ -83,8 +81,8 @@ Schema : DES V1.0
 
 <call> Ovaries-New.WrapUp </call>
 <call> Ovaries-Follicle.Wrapup </call>
-<call> Ovaries-Ovulation.Wrapup </call>
 <call> Ovaries-CorpusLuteum.Wrapup </call>
+<call> Ovaries-Ovulation.Wrapup </call>
 
 <def><name> Idle? </name><val> Phase EQ IS_IDLE </val></def>
 <def><name> Follicular? </name><val> Phase EQ IS_FOLLICULAR </val></def>

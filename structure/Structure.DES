@@ -77,6 +77,7 @@ By : University of Mississippi Medical Center
   </if>
 
   <call> Endometrium.WrapUp </call>
+  <call> LH.Wrapup </call>
   <call> Drugs.Wrapup </call>
 
 </block>

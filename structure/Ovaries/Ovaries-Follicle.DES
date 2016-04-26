@@ -62,30 +62,6 @@ Schema : DES V1.0
 
 <block><name> Wrapup </name>
 
-<if>
-<test>
-       ( Ovaries.Cycling? )
-   AND ( Ovaries.Phase NE Ovaries.IS_FOLLICULAR )
-   AND ( ( Mass + Ovaries-CorpusLuteum.Mass ) LE 400.0 )
-   AND ( FSH-Circulating.[Conc(IU/L)] GT 3.0 )
-</test>
-<true>
-  <def><name> Ovaries.Phase </name><val> Ovaries.IS_FOLLICULAR </val></def>
-  <def><name> Mass </name><val> 65 </val></def>
-</true>
-</if>
-
-<if>
-<test>
-       ( LH-Circulating.[Conc(IU/L)] GT 20.0 )
-   AND ( Mass GT 2800.0 )
-   AND ( Ovaries.Phase EQ Ovaries.IS_FOLLICULAR )
-</test>
-<true>
-  <def><name> Ovaries.Phase </name><val> Ovaries.IS_OVULATORY </val></def>
-</true>
-</if>
-
 <def>
   <name> Radius(mM) </name>
   <val> ( 0.239 * Mass ) ^ 0.333 </val>

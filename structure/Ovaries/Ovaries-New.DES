@@ -88,6 +88,9 @@
 <var><name> FlagAF3 </name><val> FALSE </val></var>
 <var><name> Flag </name><val> FALSE </val></var>
 
+<var><name> FollicleMass </name></var>
+<var><name> LutealMass </name></var>
+
 </variables>
 
 <equations>
@@ -145,7 +148,7 @@
   <integralname> OvF </integralname>
   <initialval> 0.0 </initialval>
   <dervname> dOvFdt </dervname>
-  <errorlim> 0.01 </errorlim>
+  <errorlim> 0.1 </errorlim>
 </diffeq>
 
 <diffeq>
@@ -285,6 +288,9 @@
 </block>
 
 <block><name> WrapUp </name>
+<def><name> FollicleMass </name><val> AF1 + AF2 + AF3 + AF4 </val></def>
+<def><name> LutealMass </name><val> Lut1 + Lut2 + Lut3 + Lut4 </val></def>
+
 <!--
 <def><name> AF1 </name><val> AF1 MAX 0 </val></def>
 <def><name> AF2 </name><val> AF2 MAX 0 </val></def>

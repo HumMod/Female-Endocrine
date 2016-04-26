@@ -12,6 +12,10 @@
 <var><name> [LH_R] </name><val> 0.332 </val></var>
 <var><name> [R_des] </name><val> 0.882 </val></var>
 
+<var><name> flag </name><val> 1 </val> </var>
+<var><name> Period </name><val> 0 </val></var>
+<var><name> LastTime </name><val> 0 </val></var>
+
 </variables>
 
 <equations>
@@ -75,9 +79,12 @@
 
 <def><name> Change </name><val> LH-AnteriorPituitary.Release - ( ( ( k_on * R + k_cl ) * LH_blood ) ) </val></def>
 
-
 </block>
 
+<block><name> Wrapup </name>
+
+
+</block>
 </definitions>
 </structure>
 
