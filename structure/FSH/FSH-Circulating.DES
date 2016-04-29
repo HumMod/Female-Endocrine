@@ -71,6 +71,11 @@
 
 <def><name> Change </name><val> FSH-AnteriorPituitary.Release - ( ( k_on * R + k_cl ) * FSH_blood ) </val></def>
 
+<!--
+<def><name> R </name><val> R MAX 0  </val></def>
+<def><name> FSH_R </name><val> FSH_R MAX 0  </val></def>
+<def><name> R_des </name><val> R_des MAX 0   </val></def>
+-->
 </block>
 
 </definitions>

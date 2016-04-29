@@ -44,12 +44,13 @@
 
 <def><name> H(-)_syn </name><val> 1 / ( 1 + ( ( GnRH.freq / T_freq ) ^ n_freq ) ) </val></def>
 <def><name> H(+)_rel </name><val> ( ( GnRH.[GRa] / T_GR ) ^ n_GR ) / ( 1 + ( ( GnRH.[GRa] / T_GR ) ^ n_GR ) ) </val></def>
-
 <def><name> Synthesis </name><val> ( k_Ih / ( 1 + ( ( Ovaries-New.[IhAe] / T_IhA ) ^ n_IhA ) + ( ( Ovaries-New.[IhB] / T_IhB ) ^ n_IhB ) ) ) * H(-)_syn </val></def>
-
 <def><name> Release </name><val> ( b_rel + ( k_GR * H(+)_rel ) ) * FSH_pit </val></def>
-
 <def><name> Change </name><val> Synthesis - Release </val></def>
+
+<!--
+<def><name> FSH_pit </name><val> FSH_pit MAX 0 </val></def>
+-->
 
 </block>
 

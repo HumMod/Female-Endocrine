@@ -2,16 +2,16 @@
 
 <variables>
 
-<parm><name> f0 </name><val> 0.0111 </val></parm>
+<parm><name> f0 </name><val> 0.0111 </val></parm>0.111
 <parm><name> T_P4(freq) </name><val> 0.5 </val></parm>1.2
 <parm><name> n_P4(freq) </name><val> 2 </val></parm>
 <parm><name> m_E2(freq) </name><val> 1 </val></parm>
-<parm><name> T_E2(freq) </name><val> 220 </val></parm>
-<parm><name> n_E2(freq) </name><val> 10 </val></parm>
+<parm><name> T_E2(freq) </name><val> 220 </val></parm>220
+<parm><name> n_E2(freq) </name><val> 10 </val></parm>10
 <parm><name> a0 </name><val> 0.005593 </val></parm>
 <parm><name> T_E2(mass1) </name><val> 160 </val></parm>220
 <parm><name> n_E2(mass1) </name><val> 2 </val></parm>
-<parm><name> T_E2(mass2) </name><val> 9.6 </val></parm>
+<parm><name> T_E2(mass2) </name><val> 9.6 </val></parm>9.6
 <parm><name> n_E2(mass2) </name><val> 1 </val></parm>
 <parm><name> k_degr(G) </name><val> 0.0003104 </val></parm>
 <parm><name> k_on(G) </name><val> 0.2237 </val></parm>
@@ -117,6 +117,13 @@
 <def><name> dGRidt </name><val> ( ( k_inact(GR) * [GRa] ) - ( k_act(GR) * [GRi] ) - ( k_degr(GR) * [GRi] ) - ( k_diss(GR) * [GRi] ) ) * BloodVol.Vol(L) </val></def>
 <def><name> dGdt </name><val> ( ( mass * freq ) - ( k_on(G) * [G] * [Ra] ) + ( k_off(G) * [GRa] ) - ( k_degr(G) * [G] ) ) * BloodVol.Vol(L) </val></def>
 
+<!--
+<def><name> Ra </name><val> Ra MAX 0 </val></def>
+<def><name> Ri </name><val> Ri MAX 0  </val></def>
+<def><name> GRa </name><val> GRa MAX 0  </val></def>
+<def><name> GRi </name><val> GRi MAX 0 </val></def>
+<def><name> G </name><val> G MAX 0  </val></def>
+-->
 </block>
 
 </definitions>

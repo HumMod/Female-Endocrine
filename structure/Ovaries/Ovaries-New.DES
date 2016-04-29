@@ -9,15 +9,25 @@
 <parm><name> k_AF2 </name><val> 0.000424 </val></parm> 1.221
 <parm><name> k_AF2(AF3) </name><val> 0.005085 </val></parm>4.882
 <parm><name> SF_LHR </name><val> 2.26 </val></parm>2.726
+
+
 <parm><name> n_AF2(AF3) </name><val> 3.689 </val></parm>
+
+
 <parm><name> k_AF3 </name><val> 0.000339 </val></parm>4.882
 <parm><name> k_AF3(AF3) </name><val> 0.0002118 </val></parm>0.122
 <parm><name> SeFmax3 </name><val> 10 </val></parm>10
 <parm><name> k_AF3(AF4) </name><val> 0.08476 </val></parm>122.06
+
 <parm><name> n_AF3(AF4) </name><val> 5 </val></parm>
+
+
 <parm><name> k_AF4 </name><val> 0.33904 </val></parm> 122.06
 <parm><name> k_AF4(AF4) </name><val> 0.029666 </val></parm>12.206
+
 <parm><name> n_AF4 </name><val> 2 </val></parm>
+
+
 <parm><name> SeFmax4 </name><val> 1.0 </val></parm>10
 <parm><name> k_AF4(PrF) </name><val> 1.155 </val></parm>332.75
 <parm><name> k_PrF </name><val> 0.693 </val></parm>332.75
@@ -253,7 +263,7 @@
 
 <def><name> FlagAF2 </name><val> ( ( 1 - FlagAF2 ) AND ( [AF2] GT 45 ) ) OR ( FlagAF2 AND ( FSH-Circulating.[FSH_R] GT 0.5 ) AND ( [AF2] GT 1 ) ) </val></def>
 <def><name> FlagAF3 </name><val> ( ( 1 - FlagAF3 ) AND ( [AF3] GT 9.09 ) ) OR ( FlagAF3 AND ( FSH-Circulating.[FSH_R] GT 0.5 ) AND ( [AF3] GT 1 ) ) </val></def>
-<def><name> Flag </name><val> FlagAF2 AND FlagAF3 </val></def>
+<def><name> Flag </name><val> FlagAF2 AND FlagAF3 AND 0 </val></def>
 
 </block>
 
@@ -265,24 +275,46 @@
 <def><name> H(+)_OvF </name><val> ( ( [OvF] / T_OvF(Sc1) ) ^ n_OvF(Sc1) ) / ( 1 + ( ( [OvF] / T_OvF(Sc1) ) ^ n_OvF(Sc1) ) ) </val></def>
 <def><name> H(+)_GR </name><val> ( ( GnRH.[GRa] / T_GR(Lut) ) ^ n_GR(Lut) ) / ( 1 + ( ( GnRH.[GRa] / T_GR(Lut) ) ^ n_GR(Lut) ) ) </val></def>
 <def><name> Change </name><val>  ( ( ( ( 0.1 * [AF2] ) + ( 0.1 * [AF3] ) + ( 10 * [AF4] ) ) *  k_s * H(+)_FSH(s) ) - ( k_cl(s) * H(+)_P4(s) * [Sensitivity]  ) ) * BloodVol.Vol(mL) </val></def>
+
+
 <def><name> dAF1dt </name><val> ( ( k_AF1 * H(+)_AF1 ) - ( k_AF1(AF2) * FSH-Circulating.[FSH_R] * [AF1] ) ) * BloodVol.Vol(mL) </val></def>
+
 <def><name> dAF2dt </name><val> ( k_AF2 * FSH-Circulating.[FSH_R] * [AF1] )
  - ( ( ( 1 - Flag ) * k_AF2(AF3) * ( ( LH-Circulating.[LH_R] / SF_LHR ) ^ n_AF2(AF3) ) + ( Flag * 0.1 ) ) * [Sensitivity] * [AF2] ) * BloodVol.Vol(mL) </val></def>
+
 <def><name> dAF3dt </name><val> ( ( k_AF3 * ( ( LH-Circulating.[LH_R] / SF_LHR ) ^ n_AF2(AF3) ) * [Sensitivity] * [AF2] ) + ( k_AF3(AF3) * FSH-Circulating.[FSH_R] * [AF3] * ( 1 - ( [AF3] / SeFmax3 ) ) ) ) 
 - ( ( ( ( 1 - Flag ) * k_AF3(AF4) * ( ( LH-Circulating.[LH_R] / SF_LHR ) ^ n_AF3(AF4) ) ) + ( Flag * 0.1 ) ) * [Sensitivity] * [AF3] ) * BloodVol.Vol(mL) </val></def>
+
 <def><name> dAF4dt </name><val> ( ( k_AF4 * ( ( LH-Circulating.[LH_R] / SF_LHR ) ^ n_AF3(AF4) ) * [Sensitivity]  *  [AF3] ) + (  k_AF4(AF4) * ( ( LH-Circulating.[LH_R] / SF_LHR ) ^ n_AF4 ) * [AF4] * ( 1 - ( [AF4] / SeFmax4 ) ) )
  - ( ( ( ( 1 - Flag ) * k_AF4(PrF) * ( LH-Circulating.[LH_R] / SF_LHR ) ) + ( Flag * 0.1 ) ) * [Sensitivity] * [AF4] ) ) * BloodVol.Vol(mL) </val></def>
+
+
+
+
+
+
+
 <def><name> dPrFdt </name><val> ( ( k_PrF * ( LH-Circulating.[LH_R] / SF_LHR ) * [Sensitivity]  * [AF4] )
  - ( ( ( ( 1 - Flag ) *  k_cl(PrF) * ( ( LH-Circulating.[LH_R] / SF_LHR ) ^ n_OvF ) ) + ( Flag * 0.1 ) ) * [Sensitivity] * [PrF] ) ) * BloodVol.Vol(mL) </val></def>
+
 <def><name> dOvFdt </name><val> ( ( k_OvF * ( LH-Circulating.[LH_R] / SF_LHR ^ n_OvF ) * [Sensitivity] * [PrF] ) - ( k_cl(OvF) * [OvF] ) ) * BloodVol.Vol(mL) </val></def>
+
 <def><name> dSc1dt </name><val> ( ( k_Sc1 * H(+)_OvF ) - ( k_Sc1(Sc2) * [Sc1] ) ) * BloodVol.Vol(mL) </val></def>
+
 <def><name> dSc2dt </name><val> ( ( k_Sc1(Sc2) * [Sc1] ) - ( k_Sc2(Lut1) * [Sc2] ) ) * BloodVol.Vol(mL) </val></def>
+
 <def><name> dLut1dt </name><val> ( ( k_Sc2(Lut1) * [Sc2] ) - ( k_Lut1(Lut2) * ( 1 + ( m_GR(Lut) * H(+)_GR ) ) * [Lut1] ) ) * BloodVol.Vol(mL) </val></def>
+
 <def><name> dLut2dt </name><val> ( (  k_Lut2 * ( 1 + ( m_GR(Lut) * H(+)_GR ) ) * [Lut1] ) - ( k_Lut2(Lut3) * ( 1 + ( m_GR(Lut) * H(+)_GR ) ) * [Lut2] ) ) * BloodVol.Vol(mL) </val></def>
+
 <def><name> dLut3dt </name><val> ( ( k_Lut2(Lut3) * ( 1 + ( m_GR(Lut) * H(+)_GR ) ) * [Lut2] ) - ( k_Lut3(Lut4) * ( 1 + ( m_GR(Lut) * H(+)_GR ) ) * [Lut3] ) ) * BloodVol.Vol(mL) </val></def>
+
 <def><name> dLut4dt </name><val> ( (  k_Lut4 * ( 1 + ( m_GR(Lut) * H(+)_GR ) ) * [Lut3] ) - ( k_cl(Lut4) * ( 1 + ( m_GR(Lut) * H(+)_GR ) ) * [Lut4] ) ) * BloodVol.Vol(mL) </val></def>
+
 <def><name> dIhAdt </name><val> ( b_IhA + ( k_PrF(IhA) * [PrF] ) + ( k_Sc1(IhA) * [Sc1] ) + ( k_Lut1(IhA) * [Lut1] ) + ( k_Lut2(IhA) * [Lut2] ) + ( k_Lut3(IhA) * [Lut3] ) + ( k_Lut4(IhA) * [Lut4] ) - ( k_IhA * [IhA] ) ) * BloodVol.Vol(mL) </val></def>
+
 <def><name> dIhBdt </name><val> ( b_IhB + ( k_AF2(IhB) * [AF2] ) + ( k_Sc2(IhB) * [Sc2] )   - ( k_cl(IhB) * [IhB] ) ) * BloodVol.Vol(mL) </val></def> 
+
 <def><name> dIhAedt </name><val> ( ( k_IhA * [IhA] ) - ( k_cl(IhAe) * [IhAe] ) ) * BloodVol.Vol(mL) </val></def>
 
 </block>

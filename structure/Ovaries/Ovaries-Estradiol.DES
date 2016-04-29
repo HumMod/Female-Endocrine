@@ -8,7 +8,7 @@
 <variables>
 
 <var><name> Secretion </name></var>
-
+<parm><name> excess </name><val> 0 </val></parm>
 </variables>
 
 <definitions>
@@ -22,7 +22,7 @@
   <name> Secretion </name>
   <val>
       Follicle-Estradiol.Secretion
-    + CorpusLuteum-Estradiol.Secretion
+    + CorpusLuteum-Estradiol.Secretion + excess
   </val>
 </def>
 
