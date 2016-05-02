@@ -4,30 +4,95 @@
 
 <var><name> Secretion </name></var>
 <var><name> AndrogenSecretion </name></var>
-
+<var><name> AndrogenProduction </name></var>
+<var><name> EstrogenProduction </name></var>
 <parm><name> k_Lut1(E2) </name><val> 0.714 </val></parm>
 <parm><name> k_Lut4(E2) </name><val> 6.0244 </val></parm>
 
+<parm><name> Aromatase </name><val> 0.95 </val></parm>
+<var><name> [And] </name></var>
+<var><name> [E2] </name></var>
+
+<parm><name> Vm </name><val> 1 </val></parm>
+<parm><name> KM </name><val> 0.1 </val></parm>0.1
+
+<var><name> AndrogenGain </name></var>
+<var><name> AndrogenLoss </name></var>
+<var><name> EstrogenGain </name></var>
+<var><name> EstrogenLoss </name></var>
+
+<parm><name> Q </name><val> 1 </val></parm>
+
 </variables>
 
-<definitions>
+<equations>
 
+<diffeq>
+  <name> AndrogenMass </name>
+  <integralname> AndrogenMass </integralname>
+  <initialval> 0 </initialval>
+  <dervname> AndrogenChange </dervname>
+  <errorlim> 1 </errorlim>
+</diffeq>
+
+<diffeq>
+  <name> Mass </name>
+  <integralname> Mass </integralname>
+  <initialval> 0 </initialval>
+  <dervname> EstrogenChange </dervname>
+  <errorlim> 1 </errorlim>
+</diffeq>
+
+</equations>
+
+<definitions>
 <block><name> Dervs </name>
 
 <if><test> Gender.IsFemale </test>
 
 <true>
-<def>
+<andif><test>  Ovaries-New.LutealMass GT 0 </test>
+<true>
+<def><name> [And] </name><val> AndrogenMass / Ovaries-New.LutealMass / 1.02 </val></def>
+<def><name> [E2] </name><val> Mass / Ovaries-New.LutealMass / 1.02 </val></def>
+</true>
+<false>
+<def><name> [And] </name><val> 0</val></def>
+<def><name> [E2] </name><val> 0 </val></def>
+</false>
+</andif>
+<def><name> AndrogenLoss </name><val> [And] * Ovaries-CorpusLuteum.Q </val></def>
+
+<def>  <!-- ng/min-->
+  <name> AndrogenProduction </name>
+  <val> ( (  k_Lut1(E2) * Ovaries-New.[Lut1] )
+           + (  k_Lut4(E2) * Ovaries-New.[Lut4] ) ) * BloodVol.Vol(L) 
+  </val>
+</def>
+
+<def>  <!-- ng/min-->
+  <name> EstrogenProduction </name>
+  <val> Aromatase * ( Ovaries-New.LutealMass / 250 ) * Vm * [And] / ( [And] + KM ) MAX 0</val>
+</def>
+
+<def><name> AndrogenLoss </name><val> ( Ovaries-CorpusLuteum.Q * Estradiol.[And(nG/mL)] ) + EstrogenProduction </val></def>
+<def><name> EstrogenLoss </name><val> Ovaries-CorpusLuteum.Q * Estradiol.[Conc(nG/mL)] </val></def>
+<def><name> AndrogenGain </name><val> ( Ovaries-CorpusLuteum.Q * Estradiol.[And(nG/mL)] ) + AndrogenProduction </val></def>
+<def><name> EstrogenGain </name><val> ( Ovaries-CorpusLuteum.Q * Estradiol.[Conc(nG/mL)] ) + EstrogenProduction </val></def>
+<def><name> AndrogenChange </name><val> AndrogenGain - AndrogenLoss </val></def>
+<def><name> EstrogenChange </name><val> EstrogenGain - EstrogenLoss </val></def>
+
+<!--<def>
   <name> Secretion </name>
   <val> ( (  k_Lut1(E2) * Ovaries-New.[Lut1] )
-           + (  k_Lut4(E2) * Ovaries-New.[Lut4] ) ) * BloodVol.Vol(L) * Follicle-Estradiol.Aromatase </val>
+           + (  k_Lut4(E2) * Ovaries-New.[Lut4] ) ) * BloodVol.Vol(L) </val>
 </def>
 
 <def>
   <name> AndrogenSecretion </name>
   <val> ( (  k_Lut1(E2) * Ovaries-New.[Lut1] )
-           + (  k_Lut4(E2) * Ovaries-New.[Lut4] ) ) * BloodVol.Vol(L) * ( 1 - Follicle-Estradiol.Aromatase )</val>
-</def>
+           + (  k_Lut4(E2) * Ovaries-New.[Lut4] ) ) * BloodVol.Vol(L) </val>
+</def>-->
 
 </true>
 

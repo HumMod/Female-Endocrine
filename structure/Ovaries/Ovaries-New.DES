@@ -10,7 +10,7 @@
 <parm><name> k_AF2(AF3) </name><val> 0.005085 </val></parm>4.882
 <parm><name> SF_LHR </name><val> 2.26 </val></parm>2.726
 
-
+<var><name> AromaFMass </name><val> 0 </val></var>
 <parm><name> n_AF2(AF3) </name><val> 3.689 </val></parm>
 
 
@@ -98,8 +98,8 @@
 <var><name> FlagAF3 </name><val> FALSE </val></var>
 <var><name> Flag </name><val> FALSE </val></var>
 
-<var><name> FollicleMass </name></var>
-<var><name> LutealMass </name></var>
+<var><name> FollicleMass </name><val> 0 </val></var>
+<var><name> LutealMass </name><val> 0 </val></var>
 
 </variables>
 
@@ -320,8 +320,11 @@
 </block>
 
 <block><name> WrapUp </name>
-<def><name> FollicleMass </name><val> AF1 + AF2 + AF3 + AF4 </val></def>
+<def><name> FollicleMass </name><val> AF1 + AF2 + AF3 + AF4 + PrF + OvF </val></def>
 <def><name> LutealMass </name><val> Lut1 + Lut2 + Lut3 + Lut4 </val></def>
+
+<def><name> AromaFMass </name><val> AF3 + AF4 + PrF </val></def>
+
 
 <!--
 <def><name> AF1 </name><val> AF1 MAX 0 </val></def>

@@ -10,7 +10,7 @@
 
 <parm><name> ExogenousAndrogen </name><val> 0 </val></parm>
 <var><name> Secretion </name></var>
-<var><name> Conversion </name></var>
+<var><name> EstrogenProduction </name></var>
 <var><name> Degradation </name></var>
 
 <var><name> AndrogenSecretion </name></var>
@@ -43,7 +43,13 @@
 <parm><name> PumpSetting </name><val> 0.0 </val></parm>
 
 <parm><name> K </name><val> 0.00364 </val></parm>
-<parm><name> kf </name><val> 0.05 </val></parm>
+
+<parm><name> Aromatase </name><val> 0.5 </val></parm>
+<parm><name> BodyFat </name><val> 0.20 </val></parm>
+
+<parm><name> Vm </name><val> 150 </val></parm>150
+<parm><name> KM </name><val> 0.1  </val></parm>0.1
+
 </variables>
 
 <equations>
@@ -52,7 +58,7 @@
   <name> Mass </name>
   <integralname> Mass </integralname>
   <dervname> Change </dervname>
-  <errorlim> 0.01 </errorlim>
+  <errorlim> 1 </errorlim>
 </diffeq>
 
 
@@ -60,7 +66,7 @@
   <name> AndrogenMass </name>
   <integralname> AndrogenMass </integralname>
   <dervname> AndrogenChange </dervname>
-  <errorlim> 0.01 </errorlim>
+  <errorlim> 1 </errorlim>
 </diffeq>
 
 </equations>
@@ -108,17 +114,18 @@
   <true> Ovaries-Estradiol.Secretion </true>
   </conditional>
 
-  <def><name> AndGain </name><val> Follicle-Estradiol.AndrogenSecretion +  CorpusLuteum-Estradiol.AndrogenSecretion + ExogenousAndrogen</val></def>
-  <def><name> Conversion </name><val> kf * [And(nG/mL)] </val></def>
-  <def><name> AndLoss </name><val> K * AndrogenMass + Conversion </val></def>
-  <def><name> AndrogenChange </name><val> AndGain - AndLoss </val></def>
+  <def>  <!-- ng/min-->
+    <name> EstrogenProduction </name>
+    <val> Aromatase * BodyFat * Vm * [And(nG/mL)] / ( [And(nG/mL)] + KM ) </val>
+  </def>
 
-
-  <def><name> Gain </name><val> Secretion + Conversion + ( PumpSetting * PumpSwitch ) </val></def>
+  <def><name> Gain </name><val> EstrogenProduction + Secretion + ( PumpSetting * PumpSwitch ) </val></def>
   <def><name> Loss </name><val> K * Mass </val></def>
-
   <def><name> Change </name><val> Gain - Loss </val></def>
 
+  <def><name> AndGain </name><val> Follicle-Estradiol.AndrogenLoss +  CorpusLuteum-Estradiol.AndrogenLoss + ExogenousAndrogen</val></def>
+  <def><name> AndLoss </name><val> K * AndrogenMass + EstrogenProduction </val></def>
+  <def><name> AndrogenChange </name><val> AndGain - AndLoss </val></def>
 </block>
 
 </definitions>

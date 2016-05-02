@@ -2,7 +2,7 @@
 
 <variables>
 
-<parm><name> b_E2 </name><val> 0.0358 </val></parm>
+<parm><name> b_E2 </name><val> 0.0358 </val></parm>0.0358
 <parm><name> k_AF2(E2) </name><val> 0.00218 </val></parm>
 <parm><name> k_AF3(E2) </name><val> 0.0967 </val></parm>
 <parm><name> k_AF4(E2) </name><val> 12.084 </val></parm>
@@ -16,40 +16,89 @@
 <var><name> Secretion </name></var>
 <var><name> AndrogenSecretion </name></var>
 
+<var><name> AndrogenProduction </name></var>
+<var><name> EstrogenProduction </name></var>
+
 <parm><name> Aromatase </name><val> 0.95 </val></parm>
+<var><name> [And] </name></var>
+<var><name> [E2] </name></var>
+
+<parm><name> Vm </name><val> 1 </val></parm>
+<parm><name> KM </name><val>  0.1 </val></parm>0.1
+
+<var><name> AndrogenGain </name></var>
+<var><name> AndrogenLoss </name></var>
+<var><name> EstrogenGain </name></var>
+<var><name> EstrogenLoss </name></var>
+
 </variables>
 
-<definitions>
+<equations>
 
+<diffeq>
+  <name> AndrogenMass </name>
+  <integralname> AndrogenMass </integralname>
+ <initialval> 0 </initialval>
+  <dervname> AndrogenChange </dervname>
+  <errorlim> 1 </errorlim>
+</diffeq>
+
+<diffeq>
+  <name> Mass </name>
+  <integralname> Mass </integralname>
+<initialval> 0 </initialval>
+  <dervname> EstrogenChange </dervname>
+  <errorlim> 1 </errorlim>
+</diffeq>
+
+</equations>
+
+<definitions>
 <block><name> Dervs </name>
 
 <if><test> Gender.IsFemale </test>
 
 <true>
+<andif>
+<test> Ovaries-New.FollicleMass GT 0 </test>
+<true>
+<def><name> [And] </name><val> AndrogenMass / Ovaries-New.FollicleMass / 1.02 </val></def>
+<def><name> [E2] </name><val> Mass / Ovaries-New.FollicleMass / 1.02 </val></def>
+</true>
+<false>
+<def><name> [And] </name><val> 0 </val></def>
+<def><name> [E2] </name><val> 0</val></def>
+</false>
+</andif>
+
 <def><name> AF2Source </name><val> ( 0.5 * k_AF2(E2) * Ovaries-New.[AF2] )   </val></def>
 <def><name> AF3Source </name><val> ( 15 * k_AF3(E2) * LH-Circulating.[LH_R] * Ovaries-New.[AF3] )</val></def>
 <def><name> AF4Source </name><val> ( k_AF4(E2) * Ovaries-New.[AF4] )</val></def>
 <def><name> PrFSource </name><val> ( 0.1 * k_PrF(E2) * LH-Circulating.[LH_R]  * Ovaries-New.[PrF] ) </val></def>
 
-<def>
-  <name> AndrogenSecretion </name>
-  <val>  k_AF2(E2) * Ovaries-New.[AF2]
-            + ( ( 1 - Aromatase ) * 
-           ( ( k_AF3(E2) * LH-Circulating.[LH_R] * Ovaries-New.[AF3] )
+<def><name> AndrogenLoss </name><val> [And] * Ovaries-Follicle.Q </val></def>
+
+<def>  <!-- ng/min-->
+  <name> AndrogenProduction </name>
+  <val> ( b_E2 
+           + (  k_AF2(E2) * Ovaries-New.[AF2] )
+           + ( ( k_AF3(E2) * LH-Circulating.[LH_R] * Ovaries-New.[AF3] )
            + ( k_AF4(E2) * Ovaries-New.[AF4] )
            + ( k_PrF(E2) * LH-Circulating.[LH_R]  * Ovaries-New.[PrF] ) ) ) * BloodVol.Vol(L) 
   </val>
 </def>
 
-<def>
-  <name> Secretion </name>
-  <val> ( b_E2 
-           + ( Aromatase *
-            ( ( k_AF3(E2) * LH-Circulating.[LH_R] * Ovaries-New.[AF3] )
-           + ( k_AF4(E2) * Ovaries-New.[AF4] )
-           + ( k_PrF(E2) * LH-Circulating.[LH_R]  * Ovaries-New.[PrF] ) ) ) ) * BloodVol.Vol(L) 
-  </val>
+<def>  <!-- ng/min-->
+  <name> EstrogenProduction </name>
+  <val> Aromatase * ( Ovaries-New.AromaFMass / 1000 ) * Vm * [And] / ( [And] + KM ) </val>
 </def>
+
+<def><name> AndrogenLoss </name><val> ( Ovaries-Follicle.Q * Estradiol.[And(nG/mL)] ) + EstrogenProduction </val></def>
+<def><name> EstrogenLoss </name><val> Ovaries-Follicle.Q * Estradiol.[Conc(nG/mL)] </val></def>
+<def><name> AndrogenGain </name><val> ( Ovaries-Follicle.Q * Estradiol.[And(nG/mL)] ) + AndrogenProduction </val></def>
+<def><name> EstrogenGain </name><val> ( Ovaries-Follicle.Q * Estradiol.[Conc(nG/mL)] ) + EstrogenProduction </val></def>
+<def><name> AndrogenChange </name><val> AndrogenGain - AndrogenLoss </val></def>
+<def><name> EstrogenChange </name><val> EstrogenGain - EstrogenLoss </val></def>
 
 </true>
 
